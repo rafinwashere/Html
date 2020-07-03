@@ -1,0 +1,29 @@
+ .button
+{
+    width: 340px;
+    margin: 50px auto;
+    position: relative;
+    bottom: -60px;
+    border-color: darkblue;
+}
+.title
+{
+   width: 340px; 
+   margin: 50px auto;
+   position: relative;
+   bottom: -50px;
+   left: 20px;
+   font-style: italic;
+   
+
+}
+body
+{
+   background-image: url(https://s2.best-wallpaper.net/wallpaper/2880x1800/1609/Blue-curves-abstract-background_2880x1800.jpg);
+   
+}
+.formulario
+{
+   border-color: darkgreen;
+}
+

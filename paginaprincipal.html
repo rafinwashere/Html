@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+       <title>Encuesta</title>
+       <meta charset="UTF-8">
+       <!--Libreria de bootstrap-->
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+       <!--Libreria de Fontawesome-->
+       <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-auto-replace-svg="nest"></script>
+       <!--Css de pagina principal-->
+       <link rel="stylesheet" href="Css/paginaprincipal.css">
+       
+       
+       
+       <!--Funcion Validación de Datos en JavaScript-->
+       <script type="text/javascript"> 
+           function validar()
+           {
+               //impresión por consola nombre y edad
+               var nom = document.getElementById("nombre").value;
+               var edad = document.getElementById("edad").value;
+               //funcion para los checkbox de marca seleccionada
+              var op1 = document.getElementById('opcion1').checked;
+              var op2 = document.getElementById('opcion2').checked;
+              var op3 = document.getElementById('opcion3').checked;
+              //variables para radiobutton
+              var radio1 = document.getElementById('nota1').checked;
+              var radio2 = document.getElementById('nota2').checked;
+              var radio3 = document.getElementById('nota3').checked;
+
+
+               //print en consola
+               console.log("Nombre: "+nom);
+               console.log("Edad: "+edad);
+               console.log("Marcas Seleccionadas");
+               console.log("--------------------");
+               if(op1==true){
+                   console.log("Nike");
+                 }
+                 if(op2==true)
+                 {
+                    console.log("Adidas");
+                 }
+
+                 if(op3==true)
+                 {
+                    console.log('Puma');
+                 }
+                console.log("Evaluación de las Marcas o Marca");
+                console.log("--------------------------------") ;
+                if(radio1==true)
+                {
+                   console.log("Buena");
+                }
+                if(radio2==true)
+                {
+                    console.log("Ni Buena Ni Mala");
+                }
+                if(radio3==true)
+                {
+                   console.log("Mala");
+                }
+
+               
+               
+
+                
+        
+               //variable para validar campos vacios nombre y edad, validación para preguntas 1 y 2
+               var form = document.form;
+               //sentencia If para validar si los campos estan vacios
+               if(form.nombre.value==0)
+               {
+                   alert("P1: Debe ingresar su Nombre");
+                   form.nombre.value="";
+                   form.nombre.focus();
+                   return false; 
+               }else if(form.edad.value==0)
+               {
+                   alert("P2: Debe ingresar su edad");
+                   form.edad.value="";
+                   form.edad.focus();
+                   return false;
+               } 
+               //validar si los checkbox de marca estan vacios
+               const opcion = document.querySelectorAll('input[type="checkbox"]:checked');
+               if(opcion.length <=0)
+               {
+                  alert('P3: Debe Seleccionar al menos una marca');
+                  return;
+               }
+
+
+               //validación de la 4ta pregunta 
+               var opt = "no";
+               for(var i=0;i<document.form.nota.length;i++)
+               {
+                  if(document.form.nota[i].checked)
+                  {
+                   
+                   opt = "si";
+                  }
+               }
+               if(opt=="no")
+               {
+                   alert("P4 : Debe seleccionar una opcion de evaluación buena,ni buena ni mala o mala");
+                   
+                   return false;
+               }
+
+               
+
+           }
+           //función para insertar el nombre de la P1 en la P2
+           function copia()
+           {
+             document.getElementById('recibir').value = document.getElementById('nombre').value;
+           }
+           
+
+
+       </script>
+       
+    </head>
+    <body>
+        <div class="general-form">
+            <form action="#"  name="form"  class="only-form" method="POST" onsubmit="return validar();">
+                <div class="form-group">
+                    <label for=nombre>¿Cual es su Nombre?</label>
+                    <p><input type="text" name="nombre" id="nombre" style="width:290px; height:30px" onkeyup="copia();" class="form-control"></p>
+                </div>
+                <div class="form-group">
+                    <label for="edad">¿Cual es su edad?</label> <input type="text" class="recibir" id="recibir">
+                    <p><input type ="number" name="edad" id="edad" style="width:290px; height:30px" class="form-control"></p>
+                </div>
+                <div class ="form-group">
+                   <fieldset id="marca" >
+                       <legend>¿Cual de las siguientes marcas conoces?</legend>
+                       <p><label> <input type="checkbox" name="opcion" id="opcion1" value="nike" >Nike</input></label></p>
+                       <p><label> <input type="checkbox" name="opcion" id="opcion2" value="adidas" >Adidas</input></label></p>
+                       <p><label> <input type="checkbox" name="opcion" id="opcion3" value="puma" >Puma</input></label></p>
+                   </fieldset>
+                   
+                </div>
+                <div class="form-group">
+                     <fieldset id="nota-group">
+                        <legend>¿Que te parece la(s) marca(s) seleccionada(s)?</legend>
+                        <p><label> <input type="radio" name="nota" id="nota1" value="buena" > Buena</input></label></p>
+                        <p><label> <input type="radio" name="nota" id="nota2" value="nibuenanimala"> Ni buena ni mala</input></label></p>
+                        <p><label> <input type="radio" name="nota" id="nota3" value="Mala"> Mala</input></label></p>
+                     </fieldset>
+                </div>
+                <div class="form-group">
+                  <center>
+                   <input  onclick="validar();" type="button"  name="btnEnviar "value="Enviar Datos" class="btnEnviar btn btn-primary"></input>
+                  </center> 
+                </div>
+            </form>
+        </div>
+        
+    </body>
+</html>
